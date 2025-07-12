@@ -1,0 +1,12 @@
+---
+- hosts: web
+  remote_user: ubuntu  # EC2 user
+  become: yes          # Run tasks with sudo
+  vars_prompt:
+    - name: password
+      prompt: "Enter your password:"
+      private: yes
+  
+  roles:
+    - test
+

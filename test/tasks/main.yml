@@ -1,0 +1,38 @@
+# - name: Update apt cache
+#   apt:
+#     update_cache: yes
+#   # when: update=="yes"
+#   when: ansible_facts["os_family"]=="Debian" or update=="yes"
+
+
+# - name: Install Nginx
+#   apt:
+#     name: nginx
+#     state: present
+
+# - name: Create a directory
+#   file:
+#     path: "{{ dir_name }}"
+#     state: directory
+
+# - name: List contents of the directory
+#   command: ls {{ dir_name }}
+#   register: results
+
+# - name: print
+#   debug: 
+#     var: results.stdout
+
+- name: cp template
+  template: 
+    src: myconfig
+    dest: myconfig
+  notify: restart nginx
+
+# - name: create user 
+#   user:
+#     name: "{{ item }}"
+#     state: present
+#   with_items:
+#     - abdullah
+#     - abdullah
